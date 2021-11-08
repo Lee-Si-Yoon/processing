@@ -1,6 +1,16 @@
+int cols, rows;
+int scl = 30;
+int w = 300;
+int h = 9000;
+
+float fly = 0;
+
 void terrian(float mAmp) {
-  if (mAmp > 10) fly -= 0.1;
+  
+  if (mAmp > 1) fly -= 0.1;
+  
   float yoff = fly;
+  
   for (int y = 0; y < rows; y ++) {
     float xoff = 0;
     for (int x = 0; x < cols; x ++) {
@@ -9,13 +19,14 @@ void terrian(float mAmp) {
     }
     yoff += 0.1;
   }
+  
   pushMatrix();
-  translate(width/2, height/2+500);
+  translate(width/2, height/2+300);
   rotateX(PI/2);
   translate(-w/2, -h/2);
   for (int y = 0; y < rows-1; y ++) {
     noFill();
-    stroke(255, 20);
+    stroke(255, 50);
     strokeWeight(1);
     beginShape();
     for (int x = 0; x < cols; x ++) {
