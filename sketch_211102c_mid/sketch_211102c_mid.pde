@@ -1,4 +1,5 @@
 import processing.sound.*;
+SoundFile file;
 FFT fft;
 AudioIn mic;
 Amplitude amp;
@@ -6,7 +7,7 @@ Amplitude amp;
 int bands = 256; //default is 512
 float[] fftVar = new float[bands];
 
-int del = 3000;
+int del = 400;
 
 float[][] terrain;
 
@@ -14,14 +15,17 @@ float[][] terrain;
 
 void setup() {
   size(790, 990, P3D);
-
-  mic = new AudioIn(this, 0); // mic's number, 0 is first mic
+  file = new SoundFile(this, "baek-240 (mp3cut.net) (1).wav");
+  //mic = new AudioIn(this, 0); // mic's number, 0 is first mic
   amp = new Amplitude(this);
-  amp.input(mic);
+  amp.input(file);
+  //amp.input(mic);
   //mic.play();
+  file.play();
 
   fft = new FFT(this, bands); // Analog ro Digital Converting(ADC)
-  fft.input(mic);
+  //fft.input(mic);
+  fft.input(file);
 
   cols = w / scl;
   rows = h / scl;
@@ -40,7 +44,7 @@ int ballWidth = 48;
 void draw() {
   background(0);
   fft.analyze(fftVar);
-  int Amp = int(amp.analyze()* 1000);
+  int Amp = int(amp.analyze()* 200);
   int mAmp = min(Amp, bands);
   float myAmp = map(mAmp, 50, bands, 0, height/30);
 
