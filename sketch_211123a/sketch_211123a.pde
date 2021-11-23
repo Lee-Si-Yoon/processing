@@ -71,6 +71,9 @@ void draw() {
     color c = img.pixels[mouseX + col * img.width];
     stroke(c);
     line(mouseX, col, 500, col);
+    color c2 = img.pixels[max(0,mouseX-100) + col * img.width];
+    stroke(c2);
+    line(mouseX-100, col, 0, col);
   }
 
   for (int row = 0; row < 500; row+=50) {
