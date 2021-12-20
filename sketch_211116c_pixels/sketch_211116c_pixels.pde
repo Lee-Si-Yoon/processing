@@ -34,7 +34,7 @@ void draw() {
   for (int imgx = 0; imgx < 800; imgx++ ){
     for(int imgy = 0; imgy < 355; imgy++){
       int imgLoc = imgx + imgy * 800;
-      int loc = (imgx+100) + (imgy+200) * 1000;
+      int loc = (imgx+100) + (imgy+200) * width;
       pixels[loc] = img.pixels[imgLoc];
     }
   }
